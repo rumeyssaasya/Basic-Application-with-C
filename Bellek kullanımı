@@ -1,0 +1,13 @@
+#include<string.h>
+#include<stdlib.h>
+#include<stdio.h>
+int main(){
+    char *name;
+    name=(char*)malloc(20*sizeof(char));
+    if(name==NULL)
+    printf("Memory couldn't provided");
+    else{
+        strcpy(name,"Rümeysa ACİOĞLU");
+        printf("Name is %s",name);
+    }
+}
