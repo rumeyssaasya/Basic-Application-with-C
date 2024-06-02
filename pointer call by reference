@@ -1,0 +1,18 @@
+#include<stdlib.h>
+#include<stdio.h>
+void swaps(int *q,int *p);
+int main(){
+    int num1,num2;
+    printf("Enter the numbers: ");
+    scanf("%d",&num1);scanf("%d",&num2);
+    printf("before num1=%d num2=%d ",num1,num2);
+    swaps(&num1,&num2);
+    printf("\nafter num1=%d num2=%d ",num1,num2);
+}
+void swaps(int *q,int *p){
+    int temp;
+    temp=*q;
+    *q=*p;
+    *p=temp;
+   
+}
