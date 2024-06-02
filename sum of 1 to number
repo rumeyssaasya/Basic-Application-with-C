@@ -1,0 +1,20 @@
+#include <stdio.h>
+int sum(int num);
+int main() {
+    
+    int num;
+    printf("Sayı giriniz: ");
+    scanf("%d",&num);
+    int result = sum(num);
+    printf("%d",result);
+    return 0;
+}
+
+int sum(int num){
+    if(0==num){
+        return 0;
+    }
+    else
+        return num+sum(num-1);
+    
+}
