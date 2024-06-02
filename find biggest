@@ -1,0 +1,32 @@
+
+#include <stdio.h>
+int findBig(int series[],int num);
+
+int main() {
+    int num,el,i,series[100];
+    printf("Eleman sayısı giriniz: ");
+    scanf("%d",&num);
+    printf("Dizinin elemanlarını giriniz: ");
+    for(i=0;i<num;i++){
+        printf("\n%d. eleman ",i+1);
+        scanf("%d",&el);
+        series[i]=el;
+    }
+    
+    
+        int biggest =findBig(series,num);
+        printf("%d",biggest);
+    
+    return 0;
+}
+
+
+int findBig(int series[],int num){
+        if(num==1)
+            return series[0];
+        int restMax = findBig(series+1 , num - 1); 
+        return (series[0] > restMax) ? series[0] : restMax;
+        
+        
+    
+}
