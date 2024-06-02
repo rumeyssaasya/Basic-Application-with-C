@@ -1,0 +1,23 @@
+#include<stdlib.h>
+#include<stdio.h>
+int main(){
+    int boyut,*data,el,ekel,i,j,ek;
+    printf("Ayırmak istenen alan: ");
+    scanf("%d",&boyut);
+    data=(int*)malloc(boyut*sizeof(int));
+    for(i=0;i<boyut;i++){
+        printf("%d. eleman: ",i+1);
+        scanf("%d",&el);
+        data[i]=el;
+    }
+    printf("Eklenmek istenen alan: ");
+    scanf("%d",&ek);
+    data =(int*)realloc(data,(boyut+ek)*sizeof(int));
+    for(j=boyut;j<(boyut+ek);j++){
+        printf("%d . elemanı giriniz: ",j+1);
+        scanf("%d",&ekel);
+        data[j]=ekel;
+    }for(i=0;i<(boyut+ek);i++)
+    printf("%d ",data[i]);
+    return 0;
+}
