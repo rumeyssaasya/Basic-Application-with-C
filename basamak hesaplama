@@ -1,0 +1,18 @@
+
+#include <stdio.h>
+int basamak(int num,int bas);
+
+int main() {
+    int num; int bas=0;
+    printf("sayı giriniz: ");
+    scanf("%d",&num);
+    int result=basamak(num,bas);
+    printf("%d",result);
+    return 0;
+}
+int basamak(int num, int bas){
+    if(num/10==0)
+        return bas+1;
+    return basamak(num/10,bas+1);
+    
+}
