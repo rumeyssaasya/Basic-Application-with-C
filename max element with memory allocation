@@ -1,0 +1,26 @@
+#include<stdlib.h>
+#include<stdio.h>
+int main(){
+    int num; int *arr;
+    printf("Dizinin kaç elemanlı olacağını giriniz:");
+    scanf("%d",&num);
+    arr=(int*)malloc(num*sizeof(int));
+    if(arr==NULL){
+        printf("Alan ayrılamadı");
+        return 1;
+    }
+    for(int i =0;i<num; i++){
+        printf("%d. Elemanı girin:",i+1);
+        scanf("%d",&arr[i]);
+    }
+    int max=arr[0];
+    for(int i=1;i<num;i++){
+        if(max<arr[i])
+            max=arr[i];
+    }
+    printf("En büyük eleman= %d",max);
+    
+    free(arr);
+
+    return 0;
+}
