@@ -1,0 +1,32 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+void calculate(int series[],int stdNum,float passNote);
+int main() {
+    int stdNum,i,series[100]; 
+    float passNote,Note;
+    printf("Öğrenci sayısını giriniz (en fazla 100):");
+    scanf("%d",&stdNum);
+    if(stdNum>100 || stdNum<0){
+        printf("Sayı geçersiz");
+        scanf("%d",&stdNum);
+    }
+    printf("Ders geçme notunu giriniz: ");
+    scanf("%f",&passNote);
+    for(i=0;i<stdNum;i++){
+        printf("\n%d. öğrenci notunu giriniz: ",i+1);
+        scanf("%f",&Note);
+        series[i]=Note;
+    }
+    calculate(series,stdNum,passNote);
+    return 0;
+}
+
+void calculate(int series[],int stdNum,float passNote){
+    int j;
+    for(j=0;j<stdNum;j++){
+        if(series[j]<passNote)
+        printf("\n%d. öğrenci dersten kaldı",j+1);
+        else
+        printf("\n%d. öğrenci dersi geçti",j+1);
+    }
+}
