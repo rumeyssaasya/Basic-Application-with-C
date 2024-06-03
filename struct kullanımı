@@ -1,0 +1,78 @@
+#include<stdlib.h>
+#include<stdio.h>
+#include<string.h>
+//student adında struct tanımlanır:
+struct student{
+    int num;
+    char name[20];
+    char sname[20];
+    int mid;
+    int final;
+};
+
+//isimleri alfabeye göre sıralamak için isim karşılaştırma yapan fonksiyon tanımı:
+int compareNames(const void *a, const void *b){
+   struct student *studentA = *(struct student **)a;
+    struct student *studentB = *(struct student **)b;
+    return strcmp(studentA->name, studentB->name);
+}
+int main(){
+
+//pointer dizisi ile 5 öğrenci tanımlanır:
+    struct student *student[5];
+    char searchName[20];
+
+//bellekten allan açılır:
+    for(int i=0;i<5;i++){
+        student[i]=(struct student *)malloc(sizeof(struct student));
+        if(student[i]==NULL){
+            printf("Bellek ayrılamadı");
+            return 1;
+        }
+    }
+//öğrenci bigileri kullanıcıdan alınır:
+    for(int i=0;i<5;i++){
+        printf("%d öğrenci bilgileri: \n",i+1);
+        printf("Number =");
+        scanf("%d",&student[i]->num);
+        printf("Name =");
+        scanf("%s",student[i]->name);
+        printf("Surname =");
+        scanf("%s",student[i]->sname);
+        printf("Midterm grade =");
+        scanf("%d",&student[i]->mid);
+        printf("Final grade = ");
+        scanf("%d",&student[i]->final);
+        
+        
+    } 
+//ortalama bulma:
+    float sum=0.0;
+    for(int i=0;i<5;i++){
+        
+        sum+=(student[i]->mid+student[i]->final)/2.0;
+    }
+    float ort=sum/5.0;
+    printf("%.2f ort",ort);
+
+//sıralama için string kütüphanesinden qsort fonksiyonunu kullanma:
+    qsort(student,5,sizeof(struct student*),compareNames);
+    printf("sorted list: ");
+    for(int i=0;i<5;i++){
+        printf("Number =%d, Name=%s, Surname=%s, Midterm grade= %d, Final grade= %d \n",student[i]->num,student[i]->name,student[i]->sname,student[i]->mid,student[i]->final);
+    }
+//dizide arama yapma:
+    printf("Enter the name you wanna search: ");
+    scanf("%s",searchName);
+    for(int i=0;i<5;i++){
+        if(strcmp(student[i]->name, searchName) == 0){
+        printf("%d. student",i+1);
+            break;
+        }
+    }
+//kullanılan belleği serbest bırakma:
+    for (int i = 0; i < 5; i++) {
+        free(student[i]);
+    }
+    return 0;
+}
